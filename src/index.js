@@ -12,13 +12,14 @@ const DEBOUNCE_DELAY = 500;
 input.value = '';
 
 function handleInput(e) {
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
+
   const { value } = e.target;
 
-  fetchCountries(value)
+  if (value.trim() === '') return;
+  fetchCountries(value.trim())
     .then(data => {
-      countryList.innerHTML = '';
-      countryInfo.innerHTML = '';
-
       if (data.length === 1) {
         renderCountryInfo(data);
         return;
@@ -50,7 +51,11 @@ function renderCountryList(data) {
 function renderCountryInfo(data) {
   const markup = data
     .map(element => {
-      return `<span>${element.flag}</span><span>${element.name.common}</span><p>Capital: ${element.capital[0]}</p><p>Population: ${element.population}</p><p>Languages: ${element.name.common}</p>`;
+      return `<span>${element.flag}</span><span>${element.name.common}</span><p>Capital: ${
+        element.capital[0]
+      }</p><p>Population: ${element.population}</p><p>Languages: ${Object.values(
+        element.languages,
+      )}</p>`;
     })
     .join('');
   countryInfo.innerHTML = markup;

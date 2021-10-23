@@ -28,3 +28,7 @@ body {
 .country-list .list-item span {
   margin-right: 10px;
 }
+.country-info span {
+  font-size: 30px;
+  margin-right: 20px;
+}
