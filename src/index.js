@@ -51,9 +51,9 @@ function renderCountryList(data) {
 function renderCountryInfo(data) {
   const markup = data
     .map(element => {
-      return `<span>${element.flag}</span><span>${element.name.common}</span><p>Capital: ${
+      return `<span>${element.flag}</span><span>${element.name.common}</span><p><b>Capital:</b> ${
         element.capital[0]
-      }</p><p>Population: ${element.population}</p><p>Languages: ${Object.values(
+      }</p><p><b>Population:</b> ${element.population}</p><p><b>Languages:</b> ${Object.values(
         element.languages,
       )}</p>`;
     })
